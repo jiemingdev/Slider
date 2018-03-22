@@ -1,0 +1,19 @@
+<view class='slider slider__bg' style="width: {{width}}rpx; height: {{strokeWidth + 60}}rpx; border-radius: {{radius}}rpx;" bindtap='sliderTap'> 
+  <wxzx-progress class='slider__progress' activeColor="{{bufferColor}}" percent='{{percent}}' strokeWidth='{{strokeWidth}}' backgroundColor='{{backgroundColor}}' radius='{{radius}}' width='{{width}}'> </wxzx-progress> 
+
+  <view class='slider__line' style="width: {{value / max * 100}}%; height: {{strokeWidth}}rpx; border-radius: {{radius}}rpx; {{activeLineColor[1] ? 'background-image: linear-gradient(to right, ' + activeLineColor[0] + ', ' + activeLineColor[1] + ');' : 'background-color:' + activeColor + ';'}}">
+    <view class='block__bg' style='width: {{strokeWidth + 60}}rpx; height: {{strokeWidth + 60}}rpx; left: {{-((strokeWidth + 60) / 2) + value / max * width}}rpx;' bindtouchstart='sliderStart' bindtouchmove='sliderChange' bindtouchend='sliderEnd' bindtouchcancel='sliderCancel'>
+    <block wx:if='{{blockSrc != null && !isCustom}}'>
+      <image src='{{blockSrc}}' style='width: {{blockImageWidth}}rpx; height: {{blockImageHeight}}rpx;'></image>
+    </block>
+    <block wx:if='{{blockSrc == null && !isCustom}}'> 
+      <view class='block' style='width: {{blockSize}}rpx; height: {{blockSize}}rpx; background-color: {{blockColor}}; border-radius: {{blockSize / 2}}rpx;'></view>
+    </block>
+    <block wx:if='{{isCustom}}'>
+      <slot></slot>
+    </block>
+    </view>
+  </view>
+</view>
+ 
+

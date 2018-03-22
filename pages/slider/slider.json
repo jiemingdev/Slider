@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "slider",    
+  "usingComponents": {
+    "wxzx-slider": "../../component/wxzx-slider/wxzx-slider"
+  }
+}

@@ -1,0 +1,33 @@
+.slider {
+  position: relative;  
+}
+
+.slider__progress {
+  position: absolute; 
+  top: 50%;
+  transform: translateY(-50%);  
+}
+
+.slider__line {
+  position: absolute; 
+  top: 50%;
+  transform: translateY(-50%);  
+}
+
+.block {
+  box-shadow: 0 0 10rpx rgba(0, 0, 0, 0.3);
+  max-width: 40rpx;
+  max-height: 40rpx;
+  min-width: 20rpx;
+  min-height: 20rpx;
+}
+
+.block__bg {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center; 
+  top: 50%;
+  transform: translateY(-50%);
+  position: absolute;  
+}

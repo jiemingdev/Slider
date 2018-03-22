@@ -1,0 +1,23 @@
+<view class='container'>
+  <view class='intro'>默认</view>
+  <wxzx-progress></wxzx-progress> 
+
+  <view class='intro'>百分比 percent='90'</view>
+  <wxzx-progress percent='90'></wxzx-progress> 
+
+  <view class='intro'>单色 active-color='#ff6600'</view>
+  <wxzx-progress active-color='#ff6600' percent='90'></wxzx-progress> 
+
+  <view class='intro'>渐变色 active-color='#ff6600, #000000'</view>
+  <wxzx-progress active-color='#ff6600, #000000' percent='90'></wxzx-progress> 
+
+  <view class='intro'>设置宽度 stroke-width='20',圆角radius='10'</view>
+  <wxzx-progress active-color="#ff6600" percent='90' stroke-width='20' radius='10'></wxzx-progress> 
+
+  <view class='intro'>设置背景色 background-color='#3232de'</view>
+  <wxzx-progress active-color="#ff6600" percent='90' background-color='#3232de'></wxzx-progress>
+
+  <view class='intro'>设置宽度 width='600'</view>
+  <wxzx-progress active-color="#ff6600" percent='90' width='600'></wxzx-progress> 
+</view>
+

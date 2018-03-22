@@ -1,0 +1,13 @@
+<view class='intro'>音频播放应用</view>
+
+<view class='time_view'>
+  <view>{{pass_time}}</view>
+  <view>{{total_time}}</view>
+</view>
+<view class='slider_bg'>
+  <wxzx-slider id='wxzxSlider' blockSrc='../../img/slider.png' blockImageWidth='54' blockImageHeight='54' value='{{value}}' max='{{max}}' percent='{{percent}}' width='600' bind:sliderTap="sliderTap" bind:sliderStart="sliderStart" bind:sliderChange="sliderChange" bind:sliderEnd="sliderEnd" bind:sliderCancel="sliderCancel" slider-left='75' disabled='{{disabled}}'></wxzx-slider>  
+
+</view>
+<button bindtap='start'>开始</button>
+  <button bindtap='pause' disabled='{{pause_disable}}'>{{pause}}</button>
+  <button bindtap='stop'>停止</button>

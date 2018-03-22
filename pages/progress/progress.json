@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "progress",
+  "usingComponents": {
+      "wxzx-progress": "../../component/wxzx-progress/wxzx-progress"
+  }
+  
+}

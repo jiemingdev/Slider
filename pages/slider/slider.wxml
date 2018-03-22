@@ -1,0 +1,74 @@
+<view class='container'>
+  <view style='color: #000;'>静态slider</view>
+
+   <view class='intro'>设置宽度stroke-width='20'和圆角radius='10'</view>
+  <view class='slider_bg'>
+    <wxzx-slider id='wxzxSlider8' stroke-width='20' radius='10'></wxzx-slider>  
+  </view>
+  
+  <view class='intro'>默认</view>
+  <view class='slider_bg'>
+    <wxzx-slider id='wxzxSlider1'></wxzx-slider> 
+  </view>
+
+  <view class='intro'>设置缓冲条 percent='60'</view>
+  <view class='slider_bg'>
+    <wxzx-slider id='wxzxSlider2' percent='60'></wxzx-slider> 
+  </view>
+
+  
+
+  <view class='intro'>设置宽度 width='600' 并设置slider局屏幕左侧距离slider-left='75'</view>
+  <view class='slider_bg'>
+    <wxzx-slider id='wxzxSlider3' width='600' percent='60' slider-left='75'></wxzx-slider> 
+   </view>
+
+  <view class='intro'>设置当前取值value='40'和最大值max='100'</view>
+  <view class='slider_bg'>
+    <wxzx-slider id='wxzxSlider4' value='40' max='100' percent='60'></wxzx-slider> 
+   </view>
+
+  <view class='intro'>设置前景色 active-color='#ff6600'</view>
+  <view class='slider_bg'>
+    <wxzx-slider id='wxzxSlider5' value='40' max='100' percent='60' active-color='#ff6600'></wxzx-slider> 
+  </view>
+
+  <view class='intro'>设置缓冲条颜色 buffer-color='#51C332'</view>
+  <view class='slider_bg'>
+    <wxzx-slider id='wxzxSlider6' value='40' max='100' percent='60' buffer-color='#51C332'></wxzx-slider> 
+  </view>
+
+  <view class='intro'>设置背景色 background-color='#51C332'</view>
+  <view class='slider_bg'>
+    <wxzx-slider id='wxzxSlider7' value='40' max='100' percent='60' background-color='#51C332'></wxzx-slider> 
+  </view>
+
+  
+
+  <view class='intro'>设置滑块大小 [20, 40] 默认为40</view>
+  <view class='slider_bg'>
+    <wxzx-slider id='wxzxSlider9' value='40' max='100' percent='60' block-size='30'></wxzx-slider>  
+  </view>
+
+  <view class='intro'>设置滑块颜色</view>
+  <view class='slider_bg'>
+    <wxzx-slider id='wxzxSlider9' value='40' max='100' percent='60' block-color='#00ffff'></wxzx-slider>  
+  </view>
+
+  <view class='intro'>设置图片滑块blockSrc='../../img/slider.png' 宽度blockImageWidth='54' 高度blockImageHeight='54'</view>
+  <view class='slider_bg'>
+    <wxzx-slider id='wxzxSlider10' blockSrc='../../img/slider.png' blockImageWidth='54' blockImageHeight='54' value='40' max='100' percent='60'></wxzx-slider>  
+  </view>
+
+  <view style='color: #000;'>动态slider</view>
+  <view class='intro'>设置slider距离屏幕左边距离，默认为0 </view>
+  <view class='slider_bg'>
+    <wxzx-slider id='wxzxSlider11' blockSrc='../../img/slider.png' blockImageWidth='54' blockImageHeight='54' value='40' max='100' percent='60' width='600' slider-left='75'></wxzx-slider>  
+  </view>
+
+  <view class='intro'>disabled='true' 禁用滑动 默认为false</view>
+  <view class='slider_bg'>
+    <wxzx-slider id='wxzxSlider12' blockSrc='../../img/slider.png' blockImageWidth='54' blockImageHeight='54' value='40' max='100' percent='60' width='600' bind:sliderTap="sliderTap" bind:sliderStart="sliderStart" bind:sliderChange="sliderChange" bind:sliderEnd="sliderEnd" bind:sliderCancel="sliderCancel" slider-left='75' disabled='{{disabled}}'></wxzx-slider>  
+  </view> 
+   
+</view>

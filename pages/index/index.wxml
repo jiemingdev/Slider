@@ -1,0 +1,5 @@
+<view class='container'>
+  <button bindtap='gotoProgress'>Progress</button>
+  <button bindtap='gotoSlider'>Slider</button>
+  <button bindtap='gotoAudio'>Audio</button>
+</view>
