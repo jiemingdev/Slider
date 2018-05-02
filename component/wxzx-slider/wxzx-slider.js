@@ -6,7 +6,7 @@ Component({
   properties: {
     percent: {
       type: [Number, String],
-      value: 0
+      value: 100
     },
     width: {
       type: [Number, String],
@@ -14,7 +14,7 @@ Component({
     },
     strokeWidth: {
       type: [Number, String],
-      value: 10
+      value: 6
     },
     activeColor: {
       type: [String, Array],
@@ -22,7 +22,8 @@ Component({
     },
     bufferColor: {
       type: String,
-      value: '#949494'
+      value: '#00' 
+      // 默认为无色
     },
     backgroundColor: {
       type: String,
@@ -68,16 +69,27 @@ Component({
       type: [Number, String],
       value: 0
     },
-    sliderLeft: {
+    orientation: {
       type: [Number, String],
-      value: 0
+      value: 'landscape' 
+      // slider方向 landscape横向 portrait纵向
+    },
+    isMonitoring: {
+      type: Boolean,
+      value: true
     }
   },
   data: {
-    screenRatio: 0
+    screenRatio: 0,
+    sliderStartX: 0,
+    sliderStartY: 0,
+    startValue: 0,
+    portraitOrientation: 'bottom',
+    clickEnlargeSize: 60
   },
   attached: function () {
     let activeColor = this.data.activeColor;
+    var that = this
     if (!!~activeColor.indexOf(',')) {
       this.setData({
         activeLineColor: activeColor.split(',')
@@ -93,16 +105,20 @@ Component({
         blockSize: 20
       })
     }
-
-    this.setData({ screenRatio: getSystemScreenRatio() })
+    this.setData({ screenRatio: getSystemScreenRatio(), strokeWidth: Number(this.data.strokeWidth) })
   },
   methods: {
     sliderTap: function (e) {
       if (!this.data.disabled) {
         var that = this
         var changedTouches = e.changedTouches[0];
-        var pageX = changedTouches.pageX;
-        var value = this.data.max * ((pageX * this.data.screenRatio - this.data.sliderLeft) / this.data.width)
+        var value = 0
+        if (this.data.orientation == 'landscape') {
+          value = this.data.max * ((changedTouches.pageX - e.currentTarget.offsetLeft) * this.data.screenRatio / this.data.width)
+        } else {
+          value = this.data.max * ((this.data.width - (changedTouches.pageY - e.currentTarget.offsetTop) * this.data.screenRatio) / this.data.width)
+        }
+    
         // 超出边界时
         if (value < 0 || value > this.data.max) {
           return
@@ -120,20 +136,41 @@ Component({
     },
     sliderStart: function (e) {
       if (!this.data.disabled) {
+        var that = this
         let detail = e.changedTouches;
         let option = {};
+        var changedTouches = e.changedTouches[0];
+        this.setData({ isMonitoring: false })
+        if (this.data.sliderStartX == 0) {
+          this.setData({ sliderStartX: changedTouches.pageX })
+        }
+        if (this.data.sliderStartY == 0) {
+          this.setData({ sliderStartY: changedTouches.pageY })
+        }
+        if (this.data.startValue == 0) {
+          var startValue = this.data.value
+          this.setData({ startValue: startValue })
+        }
         this.triggerEvent('sliderStart', detail, option);
       }
     },
     sliderChange: function (e) {
       if (!this.data.disabled) {
         var changedTouches = e.changedTouches[0];
-        var pageX = changedTouches.pageX;
-        // 计算当前值
-        var value = this.data.max * ((pageX * this.data.screenRatio - this.data.sliderLeft) /  this.data.width) 
+        // 当前相对值
+
+        var value = 0
+        if (this.data.orientation == 'landscape') {
+          value = (changedTouches.pageX - this.data.sliderStartX) * this.data.screenRatio / this.data.width * this.data.max + Number(this.data.startValue)
+        } else {
+          value = (this.data.sliderStartY - changedTouches.pageY) * this.data.screenRatio / this.data.width * this.data.max + Number(this.data.startValue)
+        }        
         // 超出边界时
-        if (value < 0 || value > this.data.max) {
-          return
+        if (value < 0) {
+          value = 0
+        }
+        if(value > this.data.max) {
+          value = this.data.max
         }
         this.setData ({ value: value })
         let detail = e.changedTouches;
@@ -143,6 +180,7 @@ Component({
     },
     sliderEnd: function (e) {
       if (!this.data.disabled) {
+        this.setData({ isMonitoring: true })
         var that = this
         // 如果拉动的幅度比缓冲的值大，则调到缓冲值处播放
         if (this.data.percent <= this.data.value / this.data.max * 100) {
@@ -156,6 +194,7 @@ Component({
     sliderCancel: function (e) {
       if (!this.data.disabled) {
         var that = this
+        this.setData({ isMonitoring: true })
         if (this.data.percent <= this.data.value / this.data.max * 100) {
           this.setData({ value: that.data.percent * that.data.max / 100 })
         }

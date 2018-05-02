@@ -23,6 +23,16 @@ Component({
     radius: {
       type: [Number, String],
       value: 5
+    },
+    orientation: {
+      type: [Number, String],
+      value: 'landscape'
+      // slider方向 landscape横向 portrait纵向
+    },
+    portraitOrientation: {
+      type: [Number, String],
+      value: 'bottom'
+      // 纵向方向 top 从上到下 bottom 从下到上
     }
   },
   attached: function () {

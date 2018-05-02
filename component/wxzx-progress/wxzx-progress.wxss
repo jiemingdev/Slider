@@ -1,0 +1,7 @@
+.progress__bg {
+  position: relative;
+}
+
+.progress__line {
+  position: absolute;
+}

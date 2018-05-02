@@ -2,4 +2,5 @@
   <button bindtap='gotoProgress'>Progress</button>
   <button bindtap='gotoSlider'>Slider</button>
   <button bindtap='gotoAudio'>Audio</button>
+  <button bindtap='gotoNewAudio'>New Slider</button>
 </view>

@@ -68,7 +68,7 @@
 
   <view class='intro'>disabled='true' 禁用滑动 默认为false</view>
   <view class='slider_bg'>
-    <wxzx-slider id='wxzxSlider12' blockSrc='../../img/slider.png' blockImageWidth='54' blockImageHeight='54' value='40' max='100' percent='60' width='600' bind:sliderTap="sliderTap" bind:sliderStart="sliderStart" bind:sliderChange="sliderChange" bind:sliderEnd="sliderEnd" bind:sliderCancel="sliderCancel" slider-left='75' disabled='{{disabled}}'></wxzx-slider>  
+    <wxzx-slider id='wxzxSlider12' blockSrc='../../img/slider.png' blockImageWidth='54' blockImageHeight='54' value='40' max='100' percent='60' width='600' bind:sliderTap="sliderTap" bind:sliderStart="sliderStart" bind:sliderChange="sliderChange" bind:sliderEnd="sliderEnd" bind:sliderCancel="sliderCancel" slider-left='75' disabled='{{disabled}}' orientation='portrait'></wxzx-slider>  
   </view> 
    
 </view>

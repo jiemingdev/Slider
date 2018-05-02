@@ -18,6 +18,12 @@
   <wxzx-progress active-color="#ff6600" percent='90' background-color='#3232de'></wxzx-progress>
 
   <view class='intro'>设置宽度 width='600'</view>
-  <wxzx-progress active-color="#ff6600" percent='90' width='600'></wxzx-progress> 
+
+  <view class='bg'>
+  <wxzx-progress active-color="#ff6600" percent='90' width='600' orientation='portrait' portrait-orientation='top'></wxzx-progress> 
+
+  <wxzx-progress active-color="#ff6600, #000000" percent='90' width='600' orientation='portrait' portrait-orientation='bottom'></wxzx-progress>
+  </view> 
+
 </view>
 

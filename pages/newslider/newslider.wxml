@@ -1,0 +1,34 @@
+<view class='container'>
+  <view class='sound_effect_view'>
+    <view class='title_view1'>
+      <view>音效增强器</view>
+      <view class='triangle'></view>
+    </view>
+    <view class='portrait_slider'>
+      <view class='db_view'>
+        <text>+10 dB</text>
+        <text>0 dB</text>
+        <text>-10 dB</text>
+      </view>
+
+      <!-- orientation: landspace 横向 portrait 纵向 -->
+      <wxzx-slider class='test1' id='wxzxSlider1' value='10' max='20' width='400' bind:sliderTap="sliderTap" bind:sliderStart="sliderStart" bind:sliderChange="sliderChange" bind:sliderEnd="sliderEnd" bind:sliderCancel="sliderCancel" disabled='{{disabled}}' orientation='portrait' block-color='#3F9184' block-size='25' active-color='#3F9184'></wxzx-slider> 
+      <wxzx-slider class='test2' id='wxzxSlider2' value='10' max='20' width='400' bind:sliderTap="sliderTap" bind:sliderStart="sliderStart" bind:sliderChange="sliderChange" bind:sliderEnd="sliderEnd" bind:sliderCancel="sliderCancel" disabled='{{disabled}}' orientation='portrait' block-color='#3F9184' block-size='25' active-color='#3F9184'></wxzx-slider> 
+      <wxzx-slider class='test3' id='wxzxSlider3' value='10' max='20' width='400' bind:sliderTap="sliderTap" bind:sliderStart="sliderStart" bind:sliderChange="sliderChange" bind:sliderEnd="sliderEnd" bind:sliderCancel="sliderCancel" disabled='{{disabled}}' orientation='portrait' block-color='#3F9184' block-size='25' active-color='#3F9184'></wxzx-slider> 
+      <wxzx-slider class='test4' id='wxzxSlider4' value='10' max='20' width='400' bind:sliderTap="sliderTap" bind:sliderStart="sliderStart" bind:sliderChange="sliderChange" bind:sliderEnd="sliderEnd" bind:sliderCancel="sliderCancel" disabled='{{disabled}}' orientation='portrait' block-color='#3F9184' block-size='25' active-color='#3F9184'></wxzx-slider> 
+      <wxzx-slider class='test5' id='wxzxSlider5' value='10' max='20' width='400' bind:sliderTap="sliderTap" bind:sliderStart="sliderStart" bind:sliderChange="sliderChange" bind:sliderEnd="sliderEnd" bind:sliderCancel="sliderCancel" disabled='{{disabled}}' orientation='portrait' block-color='#3F9184' block-size='25' active-color='#3F9184'></wxzx-slider> 
+</view>
+<view class='hz_view'>
+  <text>60Hz</text>
+  <text>230Hz</text>
+  <text>910Hz</text>
+  <text>4kHz</text>
+  <text>14kHz</text>
+</view>
+</view>
+
+<view class='landspace_slider'>
+  <view class='title_view2'>环绕声</view>
+  <wxzx-slider class='test1' id='wxzxSlider6' value='7' max='10' width='300' bind:sliderTap="sliderTap" bind:sliderStart="sliderStart" bind:sliderChange="sliderChange" bind:sliderEnd="sliderEnd" bind:sliderCancel="sliderCancel" disabled='{{disabled}}' block-color='#3F9184' block-size='25' active-color='#3F9184'></wxzx-slider>
+</view>
+</view>

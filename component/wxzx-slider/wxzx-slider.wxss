@@ -1,17 +1,13 @@
 .slider {
-  position: relative;  
+  position: relative;
 }
 
 .slider__progress {
   position: absolute; 
-  top: 50%;
-  transform: translateY(-50%);  
 }
 
 .slider__line {
   position: absolute; 
-  top: 50%;
-  transform: translateY(-50%);  
 }
 
 .block {
@@ -27,7 +23,5 @@
   flex-direction: row;
   align-items: center;
   justify-content: center; 
-  top: 50%;
-  transform: translateY(-50%);
-  position: absolute;  
+  position: absolute; 
 }

@@ -20,5 +20,11 @@ Page({
     wx.navigateTo({
       url: '../audio/audio',
     })
+  },
+
+  gotoNewAudio: function () {
+    wx.navigateTo({
+      url: '../newslider/newslider'
+    })
   }
 })

@@ -1,8 +1,10 @@
-<view class='slider slider__bg' style="width: {{width}}rpx; height: {{strokeWidth + 60}}rpx; border-radius: {{radius}}rpx;" bindtap='sliderTap'> 
-  <wxzx-progress class='slider__progress' activeColor="{{bufferColor}}" percent='{{percent}}' strokeWidth='{{strokeWidth}}' backgroundColor='{{backgroundColor}}' radius='{{radius}}' width='{{width}}'> </wxzx-progress> 
+<view class='slider slider__bg' style="width: {{orientation == 'landscape' ? width : strokeWidth + clickEnlargeSize}}rpx; height: {{orientation == 'landscape' ? strokeWidth + clickEnlargeSize : width}}rpx; border-radius: {{radius}}rpx;" bindtap='sliderTap'> 
+  <wxzx-progress style="top: {{orientation == 'landscape' ? clickEnlargeSize / 2 : 0 }}rpx; left: {{orientation == 'landscape' ? 0 : clickEnlargeSize / 2}}rpx;" class='slider__progress' activeColor="{{bufferColor}}" percent='{{percent}}' strokeWidth="{{strokeWidth}}" backgroundColor='{{backgroundColor}}' radius='{{radius}}' width="{{width}}" orientation='{{orientation}}' portrait-orientation='{{portraitOrientation}}'></wxzx-progress>
 
-  <view class='slider__line' style="width: {{value / max * 100}}%; height: {{strokeWidth}}rpx; border-radius: {{radius}}rpx; {{activeLineColor[1] ? 'background-image: linear-gradient(to right, ' + activeLineColor[0] + ', ' + activeLineColor[1] + ');' : 'background-color:' + activeColor + ';'}}">
-    <view class='block__bg' style='width: {{strokeWidth + 60}}rpx; height: {{strokeWidth + 60}}rpx; left: {{-((strokeWidth + 60) / 2) + value / max * width}}rpx;' bindtouchstart='sliderStart' bindtouchmove='sliderChange' bindtouchend='sliderEnd' bindtouchcancel='sliderCancel'>
+  <view class='slider__line' style="width: {{orientation == 'landscape' ? value / max * width : strokeWidth}}rpx; height: {{orientation == 'landscape' ? strokeWidth : value / max * width}}rpx; top: {{ portraitOrientation == 'bottom' && orientation == 'portrait' ? (1 - value / max) * width : clickEnlargeSize / 2 }}rpx; left: {{orientation == 'landscape' ? 0 : clickEnlargeSize / 2}}rpx; border-radius: {{radius}}rpx; {{ orientation == 'landscape' ?(activeLineColor[1] ? 'background-image: linear-gradient(to right, ' + activeLineColor[0] + ', ' + activeLineColor[1] + ');' : 'background-color:' + activeColor + ';') : (activeLineColor[1] ? 'background-image: linear-gradient(to top, ' + activeLineColor[0] + ', ' + activeLineColor[1] + ');' : 'background-color:' + activeColor + ';')}}"> 
+    </view>
+
+    <view class='block__bg' style="width: {{strokeWidth + clickEnlargeSize}}rpx; height: {{strokeWidth + clickEnlargeSize}}rpx; left: {{orientation == 'landscape' ? -((strokeWidth + clickEnlargeSize) / 2) + value / max * width : 0}}rpx; top: {{orientation == 'landscape' ? 0 : (1 - value / max) * width-((strokeWidth + clickEnlargeSize) / 2)}}rpx;" bindtouchstart='sliderStart' bindtouchmove='sliderChange' bindtouchend='sliderEnd' bindtouchcancel='sliderCancel'>
     <block wx:if='{{blockSrc != null && !isCustom}}'>
       <image src='{{blockSrc}}' style='width: {{blockImageWidth}}rpx; height: {{blockImageHeight}}rpx;'></image>
     </block>
@@ -13,7 +15,6 @@
       <slot></slot>
     </block>
     </view>
-  </view>
 </view>
  
 

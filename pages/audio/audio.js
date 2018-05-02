@@ -42,6 +42,9 @@ Page({
     var that = this
     this.wxzxSlider = this.selectComponent("#wxzxSlider");
     audioManager.onTimeUpdate (function () {
+      if (!that.wxzxSlider.properties.isMonitoring) {
+        return
+      }
       var currentTime = audioManager.currentTime.toFixed(0);
       if (currentTime > that.data.max) {
         currentTime = that.data.max;

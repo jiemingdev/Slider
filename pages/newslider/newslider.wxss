@@ -1,0 +1,74 @@
+.sound_effect_view {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.portrait_slider {
+  margin-top: 30rpx;
+  width: 600rpx; 
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 30rpx;
+  color: gray;
+}
+
+.title_view1 {
+  width: 700rpx;
+  margin-left: 25rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: #000;
+  font-size: 40rpx;
+}
+
+.db_view {
+  height: 420rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.triangle {
+  width:0;
+  height:0;
+  border-width:16rpx 16rpx 0;
+  border-style:solid;
+  border-color:gray transparent transparent;/*灰 透明 透明 */
+  margin-left: 50rpx;
+  position:relative;
+}
+
+.hz_view {
+  margin-top: 20rpx;
+  width: 500rpx;
+  margin-left: 120rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 30rpx;
+  color: gray;
+}
+
+.landspace_slider {
+  margin-top: 100rpx;
+  width: 650rpx; 
+  height: 100%;
+  margin-left: 50rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title_view2 {
+  color: gray;
+  font-size: 40rpx;
+}
