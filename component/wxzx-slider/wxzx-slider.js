@@ -22,7 +22,7 @@ Component({
     },
     bufferColor: {
       type: String,
-      value: '#00' 
+      value: '#00'
       // 默认为无色
     },
     backgroundColor: {
@@ -51,7 +51,15 @@ Component({
     },
     max: {
       type: [Number, String],
+      value: 1000
+    },
+    min: {
+      type: [Number, String],
       value: 100
+    },
+    step: {
+      type: [Number, String],
+      value: 1
     },
     disabled: {
       type: Boolean,
@@ -71,7 +79,7 @@ Component({
     },
     orientation: {
       type: [Number, String],
-      value: 'landscape' 
+      value: 'landscape'
       // slider方向 landscape横向 portrait纵向
     },
     isMonitoring: {
@@ -114,17 +122,19 @@ Component({
         var changedTouches = e.changedTouches[0];
         var value = 0
         if (this.data.orientation == 'landscape') {
-          value = this.data.max * ((changedTouches.pageX - e.currentTarget.offsetLeft) * this.data.screenRatio / this.data.width)
+          value = (this.data.max - this.data.min) * ((changedTouches.pageX - e.currentTarget.offsetLeft) * this.data.screenRatio / this.data.width)
         } else {
-          value = this.data.max * ((this.data.width - (changedTouches.pageY - e.currentTarget.offsetTop) * this.data.screenRatio) / this.data.width)
+          value = (this.data.max - this.data.min) * ((this.data.width - (changedTouches.pageY - e.currentTarget.offsetTop) * this.data.screenRatio) / this.data.width)
         }
-    
+
         // 超出边界时
-        if (value < 0 || value > this.data.max) {
+        if (value < this.data.min || value > this.data.max) {
           return
         }
-        if (this.data.percent <= value / this.data.max * 100) {
-          this.setData({ value: that.data.percent * that.data.max / 100 })
+
+        value = Math.floor(value)
+        if (this.data.percent <= (value - this.data.min) / (this.data.max - this.data.min) * 100) {
+          this.setData({ value: that.data.percent * (that.data.max - that.data.min) / 100 + Number(that.data.min) })
         } else {
           this.setData({ value: value })
         }
@@ -161,18 +171,20 @@ Component({
 
         var value = 0
         if (this.data.orientation == 'landscape') {
-          value = (changedTouches.pageX - this.data.sliderStartX) * this.data.screenRatio / this.data.width * this.data.max + Number(this.data.startValue)
+          value = (changedTouches.pageX - this.data.sliderStartX) * this.data.screenRatio / this.data.width * (this.data.max - this.data.min) + Number(this.data.startValue)
         } else {
-          value = (this.data.sliderStartY - changedTouches.pageY) * this.data.screenRatio / this.data.width * this.data.max + Number(this.data.startValue)
-        }        
-        // 超出边界时
-        if (value < 0) {
-          value = 0
+          value = (this.data.sliderStartY - changedTouches.pageY) * this.data.screenRatio / this.data.width * (this.data.max - this.data.min) + Number(this.data.startValue)
         }
-        if(value > this.data.max) {
+        // 超出边界时
+        if (value < this.data.min) {
+          value = this.data.min
+        }
+        if (value > this.data.max) {
           value = this.data.max
         }
-        this.setData ({ value: value })
+        value = Math.floor((value - this.data.min) / this.data.step) * this.data.step + Number(this.data.min)
+        console.log(value)
+        this.setData({ value: value })
         let detail = e.changedTouches;
         let option = {};
         this.triggerEvent('sliderChange', detail, option);
@@ -183,8 +195,8 @@ Component({
         this.setData({ isMonitoring: true })
         var that = this
         // 如果拉动的幅度比缓冲的值大，则调到缓冲值处播放
-        if (this.data.percent <= this.data.value / this.data.max * 100) {
-          this.setData({ value: that.data.percent * that.data.max / 100})
+        if (this.data.percent <= (this.data.value - this.data.min) / (this.data.max - this.data.min) * 100) {
+          this.setData({ value: that.data.percent * (that.data.max - this.data.min) / 100 + Number(this.data.min) })
         }
         let detail = e.changedTouches;
         let option = {};
@@ -195,8 +207,8 @@ Component({
       if (!this.data.disabled) {
         var that = this
         this.setData({ isMonitoring: true })
-        if (this.data.percent <= this.data.value / this.data.max * 100) {
-          this.setData({ value: that.data.percent * that.data.max / 100 })
+        if (this.data.percent <= (this.data.value - this.data.min) / (this.data.max - this.data.min) * 100) {
+          this.setData({ value: that.data.percent * (that.data.max - this.data.min) / 100 + Number(this.data.min) })
         }
         let detail = e.changedTouches;
         let option = {};
