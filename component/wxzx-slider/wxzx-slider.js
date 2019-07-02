@@ -183,7 +183,6 @@ Component({
           value = this.data.max
         }
         value = Math.floor((value - this.data.min) / this.data.step) * this.data.step + Number(this.data.min)
-        console.log(value)
         this.setData({ value: value })
         let detail = e.changedTouches;
         let option = {};

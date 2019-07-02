@@ -29,6 +29,6 @@
 
 <view class='landspace_slider'>
   <view class='title_view2'>环绕声</view>
-  <wxzx-slider class='test1' id='wxzxSlider6' value='7' max='10' width='300' bind:sliderTap="sliderTap" bind:sliderStart="sliderStart" bind:sliderChange="sliderChange" bind:sliderEnd="sliderEnd" bind:sliderCancel="sliderCancel" disabled='{{disabled}}' block-color='#3F9184' block-size='25' active-color='#3F9184'></wxzx-slider>
+  <wxzx-slider class='test1' id='wxzxSlider6' value='10' step="10" min="0" max='300' width='300' bind:sliderTap="sliderTap" bind:sliderStart="sliderStart" bind:sliderChange="sliderChange" bind:sliderEnd="sliderEnd" bind:sliderCancel="sliderCancel" disabled='{{disabled}}' block-color='#3F9184' block-size='25' active-color='#3F9184'></wxzx-slider>
 </view>
 </view>
