@@ -1,19 +1,22 @@
 <view class='slider slider__bg' style="width: {{orientation == 'landscape' ? width : strokeWidth + clickEnlargeSize}}rpx; height: {{orientation == 'landscape' ? strokeWidth + clickEnlargeSize : width}}rpx; border-radius: {{radius}}rpx;" bindtap='sliderTap'> 
   <wxzx-progress style="top: {{orientation == 'landscape' ? clickEnlargeSize / 2 : 0 }}rpx; left: {{orientation == 'landscape' ? 0 : clickEnlargeSize / 2}}rpx;" class='slider__progress' activeColor="{{bufferColor}}" percent='{{percent}}' strokeWidth="{{strokeWidth}}" backgroundColor='{{backgroundColor}}' radius='{{radius}}' width="{{width}}" orientation='{{orientation}}' portrait-orientation='{{portraitOrientation}}'></wxzx-progress>
 
-  <view class='slider__line' style="width: {{orientation == 'landscape' ? value / max * width : strokeWidth}}rpx; height: {{orientation == 'landscape' ? strokeWidth : value / max * width}}rpx; top: {{ portraitOrientation == 'bottom' && orientation == 'portrait' ? (1 - value / max) * width : clickEnlargeSize / 2 }}rpx; left: {{orientation == 'landscape' ? 0 : clickEnlargeSize / 2}}rpx; border-radius: {{radius}}rpx; {{ orientation == 'landscape' ?(activeLineColor[1] ? 'background-image: linear-gradient(to right, ' + activeLineColor[0] + ', ' + activeLineColor[1] + ');' : 'background-color:' + activeColor + ';') : (activeLineColor[1] ? 'background-image: linear-gradient(to top, ' + activeLineColor[0] + ', ' + activeLineColor[1] + ');' : 'background-color:' + activeColor + ';')}}"> 
+  <view class='slider__line' style="width: {{orientation == 'landscape' ? (value-min) / (max-min) * width : strokeWidth}}rpx; height: {{orientation == 'landscape' ? strokeWidth : value / (max-min) * width}}rpx; top: {{ portraitOrientation == 'bottom' && orientation == 'portrait' ? (1 - value / (max-min)) * width : clickEnlargeSize / 2 }}rpx; left: {{orientation == 'landscape' ? 0 : clickEnlargeSize / 2}}rpx; border-radius: {{radius}}rpx; {{ orientation == 'landscape' ?(activeLineColor[1] ? 'background-image: linear-gradient(to right, ' + activeLineColor[0] + ', ' + activeLineColor[1] + ');' : 'background-color:' + activeColor + ';') : (activeLineColor[1] ? 'background-image: linear-gradient(to top, ' + activeLineColor[0] + ', ' + activeLineColor[1] + ');' : 'background-color:' + activeColor + ';')}}"> 
     </view>
 
-    <view class='block__bg' style="width: {{strokeWidth + clickEnlargeSize}}rpx; height: {{strokeWidth + clickEnlargeSize}}rpx; left: {{orientation == 'landscape' ? -((strokeWidth + clickEnlargeSize) / 2) + value / max * width : 0}}rpx; top: {{orientation == 'landscape' ? 0 : (1 - value / max) * width-((strokeWidth + clickEnlargeSize) / 2)}}rpx;" bindtouchstart='sliderStart' bindtouchmove='sliderChange' bindtouchend='sliderEnd' bindtouchcancel='sliderCancel'>
+    <view class='block__bg' style="width: {{strokeWidth + clickEnlargeSize}}rpx; height: {{strokeWidth + clickEnlargeSize}}rpx; left: {{orientation == 'landscape' ? -((strokeWidth + clickEnlargeSize) / 2) + (value-min) / (max-min) * width : 0}}rpx; top: {{orientation == 'landscape' ? 0 : (1 - value / (max-min)) * width-((strokeWidth + clickEnlargeSize) / 2)}}rpx;" bindtouchstart='sliderStart' bindtouchmove='sliderChange' bindtouchend='sliderEnd' bindtouchcancel='sliderCancel'>
     <block wx:if='{{blockSrc != null && !isCustom}}'>
       <image src='{{blockSrc}}' style='width: {{blockImageWidth}}rpx; height: {{blockImageHeight}}rpx;'></image>
     </block>
     <block wx:if='{{blockSrc == null && !isCustom}}'> 
-      <view class='block' style='width: {{blockSize}}rpx; height: {{blockSize}}rpx; background-color: {{blockColor}}; border-radius: {{blockSize / 2}}rpx;'></view>
+      <view class='block block__inner' style='width: {{blockSize}}rpx; height: {{blockSize}}rpx; background-color: {{blockColor}}; border-radius: {{blockSize / 2}}rpx;'></view>
     </block>
     <block wx:if='{{isCustom}}'>
       <slot></slot>
     </block>
+    </view>
+    <view style="position: absolute; top: -15px; left:  {{orientation == 'landscape' ? -((strokeWidth + clickEnlargeSize) / 2) + (value - min) / (max-min) * width : 0}}rpx"> 
+    {{value}}
     </view>
 </view>
  
